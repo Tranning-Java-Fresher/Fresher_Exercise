@@ -1,0 +1,387 @@
+{
+	"info": {
+		"_postman_id": "d925808a-aa23-476c-854d-4b75ae2ca23c",
+		"name": "CRUDwithJPA_test",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Author",
+			"item": [
+				{
+					"name": "addAuthor",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\" : \"Henry\",\r\n    \"description\" : \"I love book\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:6245/author/addAuthor",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "6245",
+							"path": [
+								"author",
+								"addAuthor"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getAllAuthor",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:6245/author/getAllAuthor",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "6245",
+							"path": [
+								"author",
+								"getAllAuthor"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getAuthorById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:6245/author/getAuthorById/3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "6245",
+							"path": [
+								"author",
+								"getAuthorById",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateAuthor",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\" : \"Alex_New\",\r\n    \"description\" : \"I love book_New\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:6245/author/updateAuthor/3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "6245",
+							"path": [
+								"author",
+								"updateAuthor",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deActiveAuthor",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:6245/author/deActiveAuthor/3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "6245",
+							"path": [
+								"author",
+								"deActiveAuthor",
+								"3"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Book",
+			"item": [
+				{
+					"name": "addBook",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\" : \"xyz\",\r\n    \"author\" : 2,\r\n    \"type\" : 2,\r\n    \"description\" : \"none description\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:6245/book/addBook",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "6245",
+							"path": [
+								"book",
+								"addBook"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getAllBook",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:6245/book/getAllBook",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "6245",
+							"path": [
+								"book",
+								"getAllBook"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getBookById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:6245/book/getBookById/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "6245",
+							"path": [
+								"book",
+								"getBookById",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateBook",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\" : \"xyz_new\",\r\n    \"author\" : 2,\r\n    \"type\" : 2,\r\n    \"description\" : \"none description\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:6245/book/updateBook/3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "6245",
+							"path": [
+								"book",
+								"updateBook",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deActiveBook",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:6245/book/deActiveBook/3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "6245",
+							"path": [
+								"book",
+								"deActiveBook",
+								"3"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Type",
+			"item": [
+				{
+					"name": "addType",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\" : \"Comedy\",\r\n    \"description\" : \"Movies of this genre are humorous!\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:6245/type/addType",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "6245",
+							"path": [
+								"type",
+								"addType"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getAllType",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:6245/type/getAllType",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "6245",
+							"path": [
+								"type",
+								"getAllType"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getTypeById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:6245/type/getTypeById/3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "6245",
+							"path": [
+								"type",
+								"getTypeById",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateType",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\" : \"Comedy_New\",\r\n    \"description\" : \"Movies of this genre are humorous!\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:6245/type/updateType/3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "6245",
+							"path": [
+								"type",
+								"updateType",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deActiveType",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:6245/type/deActiveType/3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "6245",
+							"path": [
+								"type",
+								"deActiveType",
+								"3"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

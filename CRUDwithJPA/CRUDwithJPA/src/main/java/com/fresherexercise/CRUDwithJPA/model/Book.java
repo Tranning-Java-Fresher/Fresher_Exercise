@@ -18,75 +18,93 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "book")
 public class Book {
+
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private int Id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long id;
     @Column(name = "name")
-    private String Name;
+    private String name;
     @Column(name = "authorId")
-    private long Author;
+    private long author;
     @Column(name = "typeId")
-    private String Type;
+    private long type;
     @Column(name = "description")
-    private String Description;
+    private String description;
+    @Column(name = "isDelete")
+    private boolean isDelete;
 
     public Book() {
     }
 
-    public Book(int Id, String Name, long Author, String Type, String Description) {
-        this.Id = Id;
-        this.Name = Name;
-        this.Author = Author;
-        this.Type = Type;
-        this.Description = Description;
+    public Book(long id, String name, long author, long type, String description, boolean isDelete) {
+        this.id = id;
+        this.name = name;
+        this.author = author;
+        this.type = type;
+        this.description = description;
+        this.isDelete = isDelete;
     }
 
-    public int getId() {
-        return Id;
+    public Book(String name, long author, long type, String description) {
+        this.name = name;
+        this.author = author;
+        this.type = type;
+        this.description = description;
+        this.isDelete = false;
     }
 
-    public void setId(int Id) {
-        this.Id = Id;
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 
     public String getName() {
-        return Name;
+        return name;
     }
 
-    public void setName(String Name) {
-        this.Name = Name;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public long getAuthor() {
-        return Author;
+        return author;
     }
 
-    public void setAuthor(long Author) {
-        this.Author = Author;
+    public void setAuthor(long author) {
+        this.author = author;
     }
 
-    public String getType() {
-        return Type;
+    public long getType() {
+        return type;
     }
 
-    public void setType(String Type) {
-        this.Type = Type;
+    public void setType(long type) {
+        this.type = type;
     }
 
     public String getDescription() {
-        return Description;
+        return description;
     }
 
-    public void setDescription(String Description) {
-        this.Description = Description;
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public boolean isIsDelete() {
+        return isDelete;
+    }
+
+    public void setIsDelete(boolean isDelete) {
+        this.isDelete = isDelete;
     }
 
     @Override
     public String toString() {
-        return "Book{" + "Id=" + Id + ", Name=" + Name + ", Author=" + Author + ", Type=" + Type + ", Description=" + Description + '}';
+        return "Book{" + "id=" + id + ", name=" + name + ", author=" + author + ", type=" + type + ", description=" + description + ", isDelete=" + isDelete + '}';
     }
 
-    
-    
     
 }

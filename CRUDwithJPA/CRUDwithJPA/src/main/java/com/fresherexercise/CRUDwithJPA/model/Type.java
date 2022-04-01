@@ -18,52 +18,71 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "type")
 public class Type {
+
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private int Id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long id;
     @Column(name = "name")
-    private String Name;
+    private String name;
     @Column(name = "description")
-    private String Description;
+    private String description;
+    @Column(name = "isDelete")
+    private boolean isDelete;
 
     public Type() {
     }
 
-    public Type(int Id, String Name, String Description) {
-        this.Id = Id;
-        this.Name = Name;
-        this.Description = Description;
+    public Type(long id, String name, String description, boolean isDelete) {
+        this.id = id;
+        this.name = name;
+        this.description = description;
+        this.isDelete = isDelete;
+    }
+    
+    public Type( String name, String description) {
+        this.name = name;
+        this.description = description;
+        this.isDelete = false;
     }
 
-    public int getId() {
-        return Id;
+    public long getId() {
+        return id;
     }
 
-    public void setId(int Id) {
-        this.Id = Id;
+    public void setId(long id) {
+        this.id = id;
     }
 
     public String getName() {
-        return Name;
+        return name;
     }
 
-    public void setName(String Name) {
-        this.Name = Name;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getDescription() {
-        return Description;
+        return description;
     }
 
-    public void setDescription(String Description) {
-        this.Description = Description;
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public boolean isIsDelete() {
+        return isDelete;
+    }
+
+    public void setIsDelete(boolean isDelete) {
+        this.isDelete = isDelete;
     }
 
     @Override
     public String toString() {
-        return "Type{" + "Id=" + Id + ", Name=" + Name + ", Description=" + Description + '}';
+        return "Type{" + "id=" + id + ", name=" + name + ", description=" + description + ", isDelete=" + isDelete + '}';
     }
-
-   
     
+
+    
+
 }
