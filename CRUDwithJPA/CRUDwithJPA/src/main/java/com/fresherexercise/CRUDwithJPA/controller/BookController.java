@@ -4,12 +4,13 @@
  */
 package com.fresherexercise.CRUDwithJPA.controller;
 
+import com.fresherexercise.CRUDwithJPA.dto.StatisticBookDTO;
 import com.fresherexercise.CRUDwithJPA.model.Book;
 import com.fresherexercise.CRUDwithJPA.repository.BookRepository;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-import javax.persistence.NoResultException;
+import java.util.stream.Collectors;
 import javax.persistence.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -118,36 +119,29 @@ public class BookController {
         }
     }
 
-    @GetMapping("/getNumberOfBook/{author}")
-    public int getNumberOfBook(@PathVariable("author") String nameAuthor) {
+    @GetMapping("/statisticBook")
+    public ResponseEntity<List<StatisticBookDTO>> getNumberOfBook() {
         Session session = openSession();
-        Object result = null;
         try {
-            Query query = session.createNativeQuery("SELECT COUNT(*) FROM book JOIN author ON book.author_id = author.id WHERE author.name LIKE '?'");
-            query.setParameter(1, nameAuthor);
-            result = query.getResultList();
-        } catch (NoResultException ex) {
+            Query query = session.createNativeQuery("SELECT author.name, count(*) FROM book JOIN author ON book.author_id = author.id GROUP BY author.name");
+            //Query query = session.createNativeQuery(queryString.toString());
+            List<Object[]> result = query.getResultList();
+            List<StatisticBookDTO> sbd = result.stream().map(item -> {
+                StatisticBookDTO statisticBookDTO = new StatisticBookDTO();
+                statisticBookDTO.setAuthorName(item[0].toString());
+                statisticBookDTO.setCount(Integer.parseInt(item[1].toString()));
+                return statisticBookDTO;
+            }).collect(Collectors.toList());
+             return (ResponseEntity<List<StatisticBookDTO>>) sbd;
+        } catch (Exception ex) {
             LOGGER.error(ex.toString());
+            ex.printStackTrace();
         } finally {
             closeSession(session);
         }
-        return -1;
+        return null;
     }
     
-    @GetMapping("/findBookByName/{bookName}")
-    public Book findBookByName(@PathVariable("bookName") String bookName) {
-        Session session = openSession();
-        Object result = null;
-        try {
-            Query query = session.createNativeQuery("SELECT * FROM book WHERE book.name LIKE '%?%'", Book.class);
-            query.setParameter(1, bookName);
-            result = query.getSingleResult();
-        }catch(NoResultException ex) {
-            LOGGER.error(ex.toString());
-        } finally {
-            closeSession(session);
-        }
-        return result != null ? (Book) result : null;
-    }
+    
     
 }
