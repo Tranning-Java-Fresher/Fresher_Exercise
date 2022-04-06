@@ -7,6 +7,7 @@ import com.fresherexercise.securityAndJwt.auth.jwt.JwtTokenProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
+import javax.validation.ValidationException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -23,8 +24,6 @@ import org.springframework.security.core.context.SecurityContextHolder;
 @RequestMapping("/api")
 public class AuthController {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(AuthController.class);
-
     @Autowired
     AuthenticationManager authenticationManager;
 
@@ -34,7 +33,7 @@ public class AuthController {
     @PostMapping("/login")
     public LoginResponse authenticateUser(@Valid @RequestBody LoginRequest loginRequest) {
 
-        // Xác thực từ username và password.
+        // Xác thực thông tin người dùng Request lên
         Authentication authentication = authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(
                         loginRequest.getUsername(),
@@ -54,6 +53,6 @@ public class AuthController {
     // Api /api/random yêu cầu phải xác thực mới có thể request
     @GetMapping("/random")
     public String randomStuff(){
-        return "JWT Hợp lệ mới có thể thấy được message này";
+        return ("JWT Hợp lệ mới có thể thấy được message này");
     }
 }

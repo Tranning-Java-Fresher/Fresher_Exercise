@@ -7,6 +7,7 @@ package com.fresherexercise.securityAndJwt.service.impl;
 import com.fresherexercise.securityAndJwt.auth.CustomUserDetails;
 import com.fresherexercise.securityAndJwt.model.User;
 import com.fresherexercise.securityAndJwt.repository.UserRepository;
+import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -30,6 +31,16 @@ public class UserService implements UserDetailsService{
         if (user == null) {
             throw new UsernameNotFoundException(username);
         }
+        return new CustomUserDetails(user);
+    }
+
+    // JWTAuthenticationFilter sẽ sử dụng hàm này
+    @Transactional
+    public UserDetails loadUserById(Long id) {
+        User user = userRepository.findById(id).orElseThrow(
+                () -> new UsernameNotFoundException("User not found with id : " + id)
+        );
+
         return new CustomUserDetails(user);
     }
 

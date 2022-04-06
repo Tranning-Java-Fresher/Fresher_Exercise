@@ -27,6 +27,7 @@ public class SecurityAndJwtApplication implements CommandLineRunner{
         User user = new User();
         user.setUserName("huy");
         user.setPassword(passwordEncoder.encode("456123"));
+        user.setRoleName("ROLE_USER");
         userRepository.save(user);
         System.out.println(user);
     }
