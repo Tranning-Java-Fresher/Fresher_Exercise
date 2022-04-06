@@ -10,6 +10,7 @@ import com.fresherexercise.securityAndJwt.service.impl.AuthServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.BeanIds;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -58,14 +59,14 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
-                .cors()
-                    .and()
-                .csrf()
-                    .disable()
-                .authorizeRequests()
-                    .antMatchers("/api/login").permitAll() // Cho phép tất cả mọi người truy cập vào 2 địa chỉ này
-                    .anyRequest().authenticated(); // Tất cả các request khác đều cần phải xác thực mới được truy cập
-
+                .cors().and()
+                .csrf().disable().authorizeRequests()
+                .antMatchers("/api/login","/api/register").permitAll() // Cho phép tất cả mọi người truy cập vào 2 địa chỉ này
+                .antMatchers(HttpMethod.PUT, "/api/updateuser").access("hasRole('ROLE_ADMIN')")
+                .antMatchers(HttpMethod.PUT, "/api/deleteuser").access("hasRole('ROLE_ADMIN')")
+                .antMatchers(HttpMethod.GET, "/api/home").access("hasAnyRole('ROLE_USER', 'ROLE_ADMIN')")
+                .anyRequest().authenticated() // Tất cả các request khác đều cần phải xác thực mới được truy cập
+                .and().exceptionHandling().accessDeniedPage("/403");
         // Thêm một lớp Filter kiểm tra jwt
         http.addFilterBefore(jwtAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class);
 

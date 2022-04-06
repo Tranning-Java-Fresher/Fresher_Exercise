@@ -24,11 +24,11 @@ public class SecurityAndJwtApplication implements CommandLineRunner{
     public void run(String... args) throws Exception {
         // Khi chương trình chạy
         // Insert vào csdl một user.
-        User user = new User();
-        user.setUserName("huy");
-        user.setPassword(passwordEncoder.encode("456123"));
-        user.setRoleName("ROLE_USER");
-        userRepository.save(user);
-        System.out.println(user);
+//        User user = new User();
+//        user.setUserName("admin");
+//        user.setPassword(passwordEncoder.encode("123456"));
+//        user.setRoleName("ROLE_ADMIN");
+//        userRepository.save(user);
+//        System.out.println(user);
     }
 }
