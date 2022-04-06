@@ -9,6 +9,7 @@ import com.fresherexercise.securityAndJwt.service.UserService;
 import com.fresherexercise.securityAndJwt.service.impl.AuthServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.BeanIds;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -23,13 +24,15 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
  *
  * @author Admin
  */
+@Configuration
 @EnableWebSecurity
-public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
+public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
+
     @Autowired
     AuthServiceImpl userService;
 
     @Bean
-    public JwtAuthenticationFilter  jwtAuthenticationFilter() {
+    public JwtAuthenticationFilter jwtAuthenticationFilter() {
         return new JwtAuthenticationFilter();
     }
 
@@ -50,17 +53,17 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
     protected void configure(AuthenticationManagerBuilder auth)
             throws Exception {
         auth.userDetailsService(userService) // Cung cáp userservice cho spring security
-            .passwordEncoder(passwordEncoder()); // cung cấp password encoder
+                .passwordEncoder(passwordEncoder()); // cung cấp password encoder
     }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .cors() // Ngăn chặn request từ một domain khác
-                    .and()
+                .and()
                 .authorizeRequests()
-                    .antMatchers("/api/login").permitAll() // Cho phép tất cả mọi người truy cập vào địa chỉ này
-                    .anyRequest().authenticated(); // Tất cả các request khác đều cần phải xác thực mới được truy cập
+                .antMatchers("/api/login").permitAll() // Cho phép tất cả mọi người truy cập vào địa chỉ này
+                .anyRequest().authenticated(); // Tất cả các request khác đều cần phải xác thực mới được truy cập
 
         // Thêm một lớp Filter kiểm tra jwt
         http.addFilterBefore(jwtAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class);

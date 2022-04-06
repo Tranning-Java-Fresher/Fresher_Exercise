@@ -26,7 +26,7 @@ public class SecurityAndJwtApplication implements CommandLineRunner{
         // Insert vào csdl một user.
         User user = new User();
         user.setUserName("huy");
-        user.setPassword(passwordEncoder.encode("123456"));
+        user.setPassword(passwordEncoder.encode("456123"));
         userRepository.save(user);
         System.out.println(user);
     }

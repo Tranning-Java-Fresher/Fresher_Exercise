@@ -16,7 +16,7 @@ import org.springframework.stereotype.Repository;
 
 /**
  *
- * @author anhdv
+ * @author Admin
  */
 @Repository
 public class UserCustomizeRepository {
@@ -46,7 +46,7 @@ public class UserCustomizeRepository {
         return null;
     }
     
-    public User findByUsername(String userName) {
+    public User findByUserName(String userName) {
         Session session = openSession();
         Object result = null;
         try {

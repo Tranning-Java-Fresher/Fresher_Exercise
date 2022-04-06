@@ -25,7 +25,7 @@ public class AuthServiceImpl implements UserDetailsService, AuthService {
     @Override
     public UserDetails loadUserByUsername(String username) {
         // Kiểm tra xem user có tồn tại trong database không?
-        User user = userRepository.findByUsername(username);
+        User user = userRepository.findByUserName(username);
         if (user == null)
             throw new UsernameNotFoundException("User not found with username : " + username);
         return new CustomUserDetails(user);

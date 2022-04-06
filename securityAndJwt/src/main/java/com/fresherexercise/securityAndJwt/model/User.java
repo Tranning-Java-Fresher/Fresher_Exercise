@@ -25,7 +25,7 @@ import org.hibernate.annotations.Proxy;
  * @author Admin
  */
 @Entity
-@Table(name = "user")
+@Table(name = "elcom_user_test")
 @Proxy(lazy = false)
 @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 @org.springframework.cache.annotation.Cacheable
