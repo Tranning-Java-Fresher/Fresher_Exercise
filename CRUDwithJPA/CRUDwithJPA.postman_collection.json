@@ -1,7 +1,7 @@
 {
 	"info": {
 		"_postman_id": "d925808a-aa23-476c-854d-4b75ae2ca23c",
-		"name": "CRUDwithJPA_test",
+		"name": "CRUDwithJPA",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
@@ -15,7 +15,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"name\" : \"Henry\",\r\n    \"description\" : \"I love book\"\r\n}",
+							"raw": "{\r\n    \"name\" : \"John\",\r\n    \"description\" : \"I love book\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -23,12 +23,12 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:6245/author/addAuthor",
+							"raw": "http://localhost:65465/author/addAuthor",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "6245",
+							"port": "65465",
 							"path": [
 								"author",
 								"addAuthor"
@@ -43,12 +43,12 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:6245/author/getAllAuthor",
+							"raw": "http://localhost:65465/author/getAllAuthor",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "6245",
+							"port": "65465",
 							"path": [
 								"author",
 								"getAllAuthor"
@@ -141,7 +141,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"name\" : \"xyz\",\r\n    \"author\" : 2,\r\n    \"type\" : 2,\r\n    \"description\" : \"none description\"\r\n}",
+							"raw": "{\r\n    \"name\" : \"Batman\",\r\n    \"author\" : 3,\r\n    \"type\" : 1,\r\n    \"description\" : \"None description\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -149,12 +149,12 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:6245/book/addBook",
+							"raw": "http://localhost:65465/book/addBook",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "6245",
+							"port": "65465",
 							"path": [
 								"book",
 								"addBook"
@@ -169,12 +169,12 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:6245/book/getAllBook",
+							"raw": "http://localhost:65465/book/getAllBook",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "6245",
+							"port": "65465",
 							"path": [
 								"book",
 								"getAllBook"
@@ -189,12 +189,12 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:6245/book/getBookById/1",
+							"raw": "http://localhost:65465/book/getBookById/1",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "6245",
+							"port": "65465",
 							"path": [
 								"book",
 								"getBookById",
@@ -254,6 +254,46 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "getNumberOfBookByAuthor",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:65465/book/statisticBookByAuthor",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "65465",
+							"path": [
+								"book",
+								"statisticBookByAuthor"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getNumberOfBookByType",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:65465/book/statisticBookByType",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "65465",
+							"path": [
+								"book",
+								"statisticBookByType"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
@@ -267,7 +307,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"name\" : \"Comedy\",\r\n    \"description\" : \"Movies of this genre are humorous!\"\r\n}",
+							"raw": "{\r\n    \"name\" : \"Romantic\",\r\n    \"description\" : \"Books of this type are interesting!\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -275,12 +315,12 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:6245/type/addType",
+							"raw": "http://localhost:65465/type/addType",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "6245",
+							"port": "65465",
 							"path": [
 								"type",
 								"addType"

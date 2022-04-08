@@ -8,24 +8,24 @@ package com.fresherexercise.CRUDwithJPA.dto;
  *
  * @author Admin
  */
-public class StatisticBookDTO {
-    private String authorName;
+public class StatisticBookByTypeDTO {
+    private String type;
     private int count;
 
-    public StatisticBookDTO() {
+    public StatisticBookByTypeDTO() {
     }
 
-    public StatisticBookDTO(String authorName, int count) {
-        this.authorName = authorName;
+    public StatisticBookByTypeDTO(String type, int count) {
+        this.type = type;
         this.count = count;
     }
 
-    public String getAuthorName() {
-        return authorName;
+    public String getType() {
+        return type;
     }
 
-    public void setAuthorName(String authorName) {
-        this.authorName = authorName;
+    public void setType(String type) {
+        this.type = type;
     }
 
     public int getCount() {
@@ -35,6 +35,4 @@ public class StatisticBookDTO {
     public void setCount(int count) {
         this.count = count;
     }
-    
-    
 }

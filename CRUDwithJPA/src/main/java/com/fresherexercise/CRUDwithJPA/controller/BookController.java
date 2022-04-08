@@ -4,9 +4,11 @@
  */
 package com.fresherexercise.CRUDwithJPA.controller;
 
-import com.fresherexercise.CRUDwithJPA.dto.StatisticBookDTO;
+import com.fresherexercise.CRUDwithJPA.dto.StatisticBookByAuthorDTO;
+import com.fresherexercise.CRUDwithJPA.dto.StatisticBookByTypeDTO;
 import com.fresherexercise.CRUDwithJPA.model.Book;
 import com.fresherexercise.CRUDwithJPA.repository.BookRepository;
+import com.fresherexercise.CRUDwithJPA.service.StatisticService;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -38,6 +40,8 @@ public class BookController {
 
     @Autowired
     BookRepository bookRepository;
+    @Autowired
+    StatisticService statisticService;
 
     @GetMapping("/getAllBook")
     public ResponseEntity<List<Book>> getAllBook(@RequestParam(required = false) String title) {
@@ -104,44 +108,13 @@ public class BookController {
         }
     }
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(BookController.class);
-    private static SessionFactory sessionFactory;
-
-    private Session openSession() {
-        Session session = this.sessionFactory.openSession();
-        return session;
+    @GetMapping("/statisticBookByAuthor")
+    public List<StatisticBookByAuthorDTO> statisticBookByAuthor() {
+        return statisticService.getNumberOfBookByAuthor();
     }
 
-    private void closeSession(Session session) {
-        if (session.isOpen()) {
-            session.disconnect();
-            session.close();
-        }
+    @GetMapping("/statisticBookByType")
+    public List<StatisticBookByTypeDTO> statisticBookByType() {
+        return statisticService.getNumberOfBookByType();
     }
-
-    @GetMapping("/statisticBook")
-    public ResponseEntity<List<StatisticBookDTO>> getNumberOfBook() {
-        Session session = openSession();
-        try {
-            Query query = session.createNativeQuery("SELECT author.name, count(*) FROM book JOIN author ON book.author_id = author.id GROUP BY author.name");
-            //Query query = session.createNativeQuery(queryString.toString());
-            List<Object[]> result = query.getResultList();
-            List<StatisticBookDTO> sbd = result.stream().map(item -> {
-                StatisticBookDTO statisticBookDTO = new StatisticBookDTO();
-                statisticBookDTO.setAuthorName(item[0].toString());
-                statisticBookDTO.setCount(Integer.parseInt(item[1].toString()));
-                return statisticBookDTO;
-            }).collect(Collectors.toList());
-             return (ResponseEntity<List<StatisticBookDTO>>) sbd;
-        } catch (Exception ex) {
-            LOGGER.error(ex.toString());
-            ex.printStackTrace();
-        } finally {
-            closeSession(session);
-        }
-        return null;
-    }
-    
-    
-    
 }
