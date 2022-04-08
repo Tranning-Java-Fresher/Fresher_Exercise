@@ -67,7 +67,7 @@ public class StatisticServiceImpl implements StatisticService {
     public List<StatisticBookByTypeDTO> getNumberOfBookByType() {
         Session session = openSession();
         try {
-            Query query = session.createNativeQuery("SELECT author.name, count(*) FROM book JOIN author ON book.author_id = author.id GROUP BY author.name");
+            Query query = session.createNativeQuery("SELECT type.name, count(*) FROM book JOIN type ON book.type_id=type.id GROUP BY type.name");
             List<Object[]> result = query.getResultList();
             List<StatisticBookByTypeDTO> sbd = result.stream().map(item -> {
                 StatisticBookByTypeDTO statisticBookByTypeDTO = new StatisticBookByTypeDTO();
