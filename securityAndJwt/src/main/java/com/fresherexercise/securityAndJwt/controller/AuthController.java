@@ -26,7 +26,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
  * @author anhdv
  */
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/auth")
 public class AuthController {
 
     @Autowired
@@ -72,28 +72,8 @@ public class AuthController {
     }
 
     // Api /api/random yêu cầu phải xác thực mới có thể request
-    @GetMapping("/random")
-    public String randomStuff() {
-        return ("JWT Hợp lệ mới có thể thấy được message này");
-    }
-
-    @GetMapping("/home")
-    public String home() {
-        return "Welcome Home!";
-    }
-
-    @PutMapping(value = "/updateuser")
-    public String updateUser() {
-        return "Update User!";
-    }
-
-    @PutMapping(value = "/deleteuser")
-    public String deleteUser() {
-        return "User is Delete";
-    }
-
-    @GetMapping(value = "/403")
-    public String accessDenied() {
-        return "You don't have permission to access this page!";
-    }
+//    @GetMapping("/random")
+//    public String randomStuff() {
+//        return ("JWT Hợp lệ mới có thể thấy được message này");
+//    }
 }

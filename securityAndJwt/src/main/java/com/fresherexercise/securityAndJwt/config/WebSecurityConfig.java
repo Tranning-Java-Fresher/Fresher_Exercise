@@ -58,15 +58,15 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http
-                .cors().and()
-                .csrf().disable().authorizeRequests()
-                .antMatchers("/api/login","/api/register").permitAll() // Cho phép tất cả mọi người truy cập vào 2 địa chỉ này
-                .antMatchers(HttpMethod.PUT, "/api/updateuser").access("hasRole('ROLE_ADMIN')")
-                .antMatchers(HttpMethod.PUT, "/api/deleteuser").access("hasRole('ROLE_ADMIN')")
-                .antMatchers(HttpMethod.GET, "/api/home").access("hasAnyRole('ROLE_USER', 'ROLE_ADMIN')")
-                .anyRequest().authenticated() // Tất cả các request khác đều cần phải xác thực mới được truy cập
-                .and().exceptionHandling().accessDeniedPage("/403");
+        http.authorizeRequests()
+                .antMatchers("/api/auth/login","/api/auth/register").permitAll() // Cho phép tất cả mọi người truy cập vào 2 địa chỉ này
+                .antMatchers("/api/test/admin").hasAnyRole("ADMIN")
+                .antMatchers("/api/test/user").hasAnyRole("USER")
+                .antMatchers("/api/test/all").hasAnyRole("ADMIN","USER")
+                .anyRequest().authenticated(); // Tất cả các request khác đều cần phải xác thực mới được truy cập
+                //.and().exceptionHandling().accessDeniedPage("/403");
+        http.cors();
+        http.csrf().disable();
         // Thêm một lớp Filter kiểm tra jwt
         http.addFilterBefore(jwtAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class);
 

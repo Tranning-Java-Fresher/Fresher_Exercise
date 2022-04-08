@@ -1,0 +1,150 @@
+{
+	"info": {
+		"_postman_id": "fad56fe2-e094-48c3-bcf4-2cf4457611af",
+		"name": "Security&Jwt",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\" : \"user\",\r\n    \"password\" : \"123456\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:65465/api/auth/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "65465",
+					"path": [
+						"api",
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Register",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"userName\" : \"manager\",\r\n    \"password\" : \"123456\",\r\n    \"roleName\" : \"ROLE_MANAGER\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:65465/api/auth/register",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "65465",
+					"path": [
+						"api",
+						"auth",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AdminPage",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJodXkiLCJleHAiOjE2NDkzNzQyNzUsImlhdCI6MTY0OTMzODI3NX0.thIV7EcU2qhHkqErg5iUn9-6xZv7LSpg_tDL32pJtCs",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:65465/api/test/user",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "65465",
+					"path": [
+						"api",
+						"test",
+						"user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UserPage",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxNSIsImlhdCI6MTY0OTM4NjMzOCwiZXhwIjoxNjQ5OTkxMTM4fQ.4ZtzoDeu4NL1Gaxpn1_Vq8-Bv7Pt7h49SCPeQCaquQm3db1f7PH7Qh9V46ht0F5J9ZkrEbQ-GlL_wNk6xnSQMA",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:65465/api/test/admin",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "65465",
+					"path": [
+						"api",
+						"test",
+						"admin"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "HomePage",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxNSIsImlhdCI6MTY0OTM4NjMzOCwiZXhwIjoxNjQ5OTkxMTM4fQ.4ZtzoDeu4NL1Gaxpn1_Vq8-Bv7Pt7h49SCPeQCaquQm3db1f7PH7Qh9V46ht0F5J9ZkrEbQ-GlL_wNk6xnSQMA",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:65465/api/test/all",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "65465",
+					"path": [
+						"api",
+						"test",
+						"all"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
