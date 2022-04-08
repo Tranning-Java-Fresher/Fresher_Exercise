@@ -11,12 +11,12 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-
 /**
  *
  * @author Admin
  */
-public class CustomUserDetails implements UserDetails{
+public class CustomUserDetails implements UserDetails {
+
     private User user;
 
     public CustomUserDetails() {
@@ -25,11 +25,10 @@ public class CustomUserDetails implements UserDetails{
     public CustomUserDetails(User user) {
         this.user = user;
     }
-    
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        // Mặc định mình sẽ để tất cả là ROLE_USER. Để demo cho đơn giản.
-        return Collections.singleton(new SimpleGrantedAuthority("ROLE_USER"));
+        return Collections.singleton(new SimpleGrantedAuthority(user.getRoleName()));
     }
 
     @Override
@@ -69,6 +68,5 @@ public class CustomUserDetails implements UserDetails{
     public void setUser(User user) {
         this.user = user;
     }
-    
-    
+
 }
