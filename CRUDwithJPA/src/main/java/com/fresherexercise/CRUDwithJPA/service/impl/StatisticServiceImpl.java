@@ -10,6 +10,7 @@ import com.fresherexercise.CRUDwithJPA.dto.StatisticBookByTypeDTO;
 import com.fresherexercise.CRUDwithJPA.service.StatisticService;
 import java.util.List;
 import java.util.stream.Collectors;
+import javax.persistence.EntityManagerFactory;
 import javax.persistence.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -26,8 +27,16 @@ import org.springframework.stereotype.Service;
 public class StatisticServiceImpl implements StatisticService {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(BookController.class);
-    @Autowired
+
     private static SessionFactory sessionFactory;
+
+    @Autowired
+    public StatisticServiceImpl(EntityManagerFactory factory) {
+        if (factory.unwrap(SessionFactory.class) == null) {
+            throw new NullPointerException("factory is not a hibernate factory");
+        }
+        this.sessionFactory = factory.unwrap(SessionFactory.class);
+    }
 
     private Session openSession() {
         Session session = this.sessionFactory.openSession();
