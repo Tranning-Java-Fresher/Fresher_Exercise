@@ -10,7 +10,6 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.web.cors.CorsConfiguration;
-//import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
@@ -26,7 +25,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
                 .antMatchers("/auth/login", "/downloadFile/**", "/rabbitmq/*"
-                            , "/swagger-resources/**", "/swagger-ui.html", "/v2/api-docs", "/webjars/**").permitAll() // Không authen nh?ng url này
+                            , "/swagger-resources/**", "/swagger-ui.html", "/v2/api-docs", "/webjars/**").permitAll() // Khï¿½ng authen nh?ng url nï¿½y
                 .antMatchers("/users").hasAnyRole("DIRECTOR") //ch? role "DIRECTOR" m?i truy c?p ???c "/users"
                 .antMatchers("/redis-test").hasAnyRole("SALE") //ch? role "SALE" m?i truy c?p ???c "/redis-test"
                 .antMatchers("/users/**").hasAnyRole("DEFAULT") //ch? role "DEFAULT" m?i truy c?p ???c "/users/**"
@@ -35,7 +34,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
         http.cors(); // M? CORS
         http.csrf().disable(); // Disable CSRF
 
-        // Filter ki?m tra jwt token
+        // Filter kiem tra jwt token
         //http.addFilterBefore(jwtAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class);
     }
     @Bean
