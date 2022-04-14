@@ -2,9 +2,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Interface.java to edit this template
  */
-package com.fresherexercise.CRUDwithJPA.repository;
+package com.fresherexercise.springMultipleDataSource.repository;
 
-import com.fresherexercise.CRUDwithJPA.model.Author;
+import com.fresherexercise.springMultipleDataSource.model.Book;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -13,11 +13,6 @@ import org.springframework.stereotype.Repository;
  * @author Admin
  */
 @Repository
-public interface AuthorRepository extends JpaRepository<Author, Long>{
-    
-//    List<Author> findByNameContaining(String title);
-   
-    //List<Author> FindByName(String nameInput);
-    
+public interface BookRepository extends JpaRepository<Book, Long>{
     
 }
