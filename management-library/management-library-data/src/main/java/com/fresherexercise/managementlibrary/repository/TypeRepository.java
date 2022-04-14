@@ -2,9 +2,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Interface.java to edit this template
  */
-package com.fresherexercise.managementlibrarydata.repository;
+package com.fresherexercise.managementlibrary.repository;
 
-import com.fresherexercise.managementlibrarydata.model.Type;
+import com.fresherexercise.managementlibrary.model.Type;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

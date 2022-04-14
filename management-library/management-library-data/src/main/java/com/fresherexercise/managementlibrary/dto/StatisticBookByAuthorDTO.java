@@ -2,30 +2,31 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.fresherexercise.managementlibrarydata.dto;
+package com.fresherexercise.managementlibrary.dto;
 
 /**
  *
  * @author Admin
  */
-public class StatisticBookByTypeDTO {
-    private String type;
+public class StatisticBookByAuthorDTO {
+
+    private String authorName;
     private int count;
 
-    public StatisticBookByTypeDTO() {
+    public StatisticBookByAuthorDTO() {
     }
 
-    public StatisticBookByTypeDTO(String type, int count) {
-        this.type = type;
+    public StatisticBookByAuthorDTO(String authorName, int count) {
+        this.authorName = authorName;
         this.count = count;
     }
 
-    public String getType() {
-        return type;
+    public String getAuthorName() {
+        return authorName;
     }
 
-    public void setType(String type) {
-        this.type = type;
+    public void setAuthorName(String authorName) {
+        this.authorName = authorName;
     }
 
     public int getCount() {
@@ -35,4 +36,5 @@ public class StatisticBookByTypeDTO {
     public void setCount(int count) {
         this.count = count;
     }
+
 }

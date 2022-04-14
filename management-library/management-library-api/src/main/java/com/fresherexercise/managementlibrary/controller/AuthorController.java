@@ -2,11 +2,11 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.fresherexercise.managementlibraryapi.controller;
+package com.fresherexercise.managementlibrary.controller;
 
 
-import com.fresherexercise.managementlibrarydata.model.Author;
-import com.fresherexercise.managementlibrarydata.repository.AuthorRepository;
+import com.fresherexercise.managementlibrary.model.Author;
+import com.fresherexercise.managementlibrary.repository.AuthorRepository;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
