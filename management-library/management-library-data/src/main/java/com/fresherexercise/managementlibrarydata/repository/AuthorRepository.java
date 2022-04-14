@@ -13,11 +13,8 @@ import org.springframework.stereotype.Repository;
  * @author Admin
  */
 @Repository
-public interface AuthorRepository extends JpaRepository<Author, Long>{
-    
-//    List<Author> findByNameContaining(String title);
-   
+public interface AuthorRepository extends JpaRepository<Author, Long> {
+
+    //List<Author> findByNameContaining(String title);
     //List<Author> FindByName(String nameInput);
-    
-    
 }
